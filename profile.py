@@ -84,6 +84,8 @@ rooftop_names = [
      "SMT"),
     ("cbrssdr1-ustar",
      "USTAR"),
+     ("cbrssdr1-hospital",
+     "Hospital"),
 ]
 
 # Frequency/spectrum parameters
