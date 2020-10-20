@@ -30,7 +30,7 @@ import geni.rspec.igext as ig
 x310_node_disk_image = \
         "urn:publicid:IDN+emulab.net+image+reu2020:cir_localization"
 setup_command = "/local/repository/startup.sh"
-#installs = ["gnuradio"]
+installs = ["gnuradio"]
 
 # Top-level request object.
 request = portal.context.makeRequestRSpec()
@@ -44,8 +44,8 @@ def x310_node_pair(idx, x310_radio_name, node_type, installs):
     node.hardware_type = node_type
     node.disk_image = x310_node_disk_image
 
-    # service_command = " ".join([setup_command] + installs)
-    # node.addService(rspec.Execute(shell="bash", command=service_command))
+    service_command = " ".join([setup_command] + installs)
+    node.addService(rspec.Execute(shell="bash", command=service_command))
 
     node_radio_if = node.addInterface("usrp_if")
     node_radio_if.addAddress(rspec.IPv4Address("192.168.40.1",
