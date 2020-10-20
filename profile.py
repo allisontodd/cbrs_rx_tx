@@ -27,8 +27,10 @@ import geni.rspec.igext as ig
 
 
 # Global Variables
+# x310_node_disk_image = \
+#         "urn:publicid:IDN+emulab.net+image+reu2020:cir_localization"
 x310_node_disk_image = \
-        "urn:publicid:IDN+emulab.net+image+reu2020:cir_localization"
+        "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU18-64-STD"
 setup_command = "/local/repository/startup.sh"
 installs = ["gnuradio"]
 
