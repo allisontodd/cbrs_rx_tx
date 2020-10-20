@@ -30,9 +30,9 @@ import geni.rspec.igext as ig
 # x310_node_disk_image = \
 #         "urn:publicid:IDN+emulab.net+image+reu2020:cir_localization"
 x310_node_disk_image = \
-        "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU18-64-STD"
+        "urn:publicid:IDN+emulab.net+image+PowderTeam:UBUNTU18-64-STD-GNURADIO"
 setup_command = "/local/repository/startup.sh"
-installs = ["gnuradio"]
+# installs = ["gnuradio"]
 
 # Top-level request object.
 request = portal.context.makeRequestRSpec()
@@ -159,11 +159,8 @@ for frange in params.freq_ranges:
     request.requestSpectrum(frange.freq_min, frange.freq_max, 100)
 
 # Request PC + X310 resource pairs.
-i = 1
-for rname,dummy in rooftop_names:
-    x310_node_pair(i, rname, params.nodetype, installs)
-# for i, radios in enumerate(params.radios):
-# 	x310_node_pair(i, radios.radio_name, params.nodetype, installs)
+for i, radios in enumerate(params.radios):
+	x310_node_pair(i, radios.radio_name, params.nodetype, installs)
 
 # Emit!
 portal.context.printRequestRSpec()
