@@ -39,15 +39,15 @@ request = portal.context.makeRequestRSpec()
 
 # Helper function that allocates a PC + X310 radio pair, with Ethernet
 # link between them.
-def x310_node_pair(idx, x310_radio_name, node_type, installs):
+def x310_node_pair(idx, x310_radio_name, node_type): #installs
     radio_link = request.Link("radio-link-%d" % idx)
 
     node = request.RawPC("%s-comp" % x310_radio_name)
     node.hardware_type = node_type
     node.disk_image = x310_node_disk_image
 
-    service_command = " ".join([setup_command] + installs)
-    node.addService(rspec.Execute(shell="bash", command=service_command))
+    # service_command = " ".join([setup_command] + installs)
+    # node.addService(rspec.Execute(shell="bash", command=service_command))
 
     node_radio_if = node.addInterface("usrp_if")
     node_radio_if.addAddress(rspec.IPv4Address("192.168.40.1",
@@ -160,7 +160,7 @@ for frange in params.freq_ranges:
 
 # Request PC + X310 resource pairs.
 for i, radios in enumerate(params.radios):
-	x310_node_pair(i, radios.radio_name, params.nodetype, installs)
+	x310_node_pair(i, radios.radio_name, params.nodetype) #installs
 
 # Emit!
 portal.context.printRequestRSpec()
