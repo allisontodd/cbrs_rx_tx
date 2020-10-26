@@ -11,6 +11,8 @@ do
 
         srslte)
             sudo DEBIAN_FRONTEND=noninteractive apt-get install -y srslte
+            sudo apt-get update;
+        	sudo apt-get install python3-pip;
             ;;
     esac
 done
